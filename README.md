@@ -325,14 +325,15 @@ The core idea is to divide the matrix multiplication task among multiple process
 2. **Compile the Programs**:
 
    ```bash
-   mpicc -o bin/mpi_matrix_multiply_blocking mpi_matrix_multiply_blocking.c -lm
-   mpicc -o bin/mpi_matrix_multiply_collective mpi_matrix_multiply_collective.c -lm
+   mpicc -o bin/mpi_matrix_multiply_blocking mpi_matrix_multiply_blocking.c -lm && \
+   mpicc -o bin/mpi_matrix_multiply_collective mpi_matrix_multiply_collective.c -lm && \
    mpicc -o bin/mpi_matrix_multiply_nonblocking mpi_matrix_multiply_nonblocking.c -lm
    ```
 
 3. **Run the Programs**:
 
    ```bash
+   cd bin
    mpirun -np 4 ./mpi_matrix_multiply_blocking
    mpirun -np 4 ./mpi_matrix_multiply_collective
    mpirun -np 4 ./mpi_matrix_multiply_nonblocking
